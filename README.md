@@ -8,8 +8,8 @@ All project files will be stored in a monorepo to for convenience only. Obviousl
 multiple ones so that separate teams working on it have more flexibility and freedom to contribute.
 
 ## Documentation Index
-- [Architecture](./documentation/architecture)
-- [Releases](./documentation/roadmap)
+- [Architecture](./documentation/architecture/index.md)
+- [Releases](./documentation/roadmap/index.md)
 
 ## Components Index
 
