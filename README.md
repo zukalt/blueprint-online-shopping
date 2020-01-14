@@ -10,6 +10,7 @@ multiple ones so that separate teams working on it have more flexibility and fre
 ## Documentation Index
 - [General Overview](./documentation/overview/index.md)
 - [Requirements](./documentation/requirements/index.md)
+- [Technology stack and tools](./documentation/architecture/stack.md)
 - [Architecture](./documentation/architecture/index.md)
 - [Implementation roadmap](./documentation/roadmap/index.md)
 
@@ -19,5 +20,6 @@ multiple ones so that separate teams working on it have more flexibility and fre
 - [Identity service](./documentation/architecture/services/identity/index.md)
 - [Recommendations API](./documentation/architecture/services/recommendations/index.md)
 - [User books for sale API]()
+- [Platform administration API]()
 - [The Deep Thought Engine]()
 - [Checkout service]()
