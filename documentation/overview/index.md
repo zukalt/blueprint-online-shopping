@@ -34,3 +34,21 @@ Ada is platform moderator. She verifies sellers and makes sure everyone follows 
  
 ### The Deep Thought
 DP is platform's recommendation engine that picks quotes for buyers based on its extraterrestrial algorithm.
+
+## Specifications
+
+### Layout and pages
+- [Landing Page and Layout](./landing-page.md)
+- [Single Thought View](./single-thought-view.md)
+
+### Payment flow
+\- missing
+
+### Administration
+\- missing
+
+### Deep Thought Recommendation algorithm
+ 
+ ```
+¯\(°_o)/¯
+```

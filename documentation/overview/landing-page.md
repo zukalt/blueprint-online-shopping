@@ -15,7 +15,7 @@ All sections retrieve data from [Recommendations service](../architecture/servic
 Section should render `more...` button to load next page of data. 
 If no more pages are available or section itself contains no data section should render appropriate message.
 
-Each section contains 5 quote boxes. Clicking on the box user navigates to [Single Thought View](./single-thought-view.md)
+Each section contains 5 quote boxes. Clicking on the box user navigates to [Single Thought View](single-thought-view.md)
 
 #### Footer
 Contains links to `about project`, `contacts` and `FAQ` pages.
