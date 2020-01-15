@@ -2,7 +2,7 @@
 
 This online book shop is unique platform for book lovers and authors to advertise and sell their books.
 Unlike its peers, THIS powers sellers with rich insights about consumer needs 
-leveraging Deep Thought approach. 
+leveraging Deep Thought approach. Seriously ;)
 
 Platform attracts buyers by it's daily quotes about Life, Universe and Everything.
 

@@ -14,12 +14,5 @@ multiple ones so that separate teams working on it have more flexibility and fre
 - [Architecture](./documentation/architecture/index.md)
 - [Implementation roadmap](./documentation/roadmap/index.md)
 
-## Components Index
-- [Load balancer (API gateway)]()
-- [Web portal]()
-- [Identity service](./documentation/architecture/services/identity/index.md)
-- [Recommendations API](./documentation/architecture/services/recommendations/index.md)
-- [User books for sale API]()
-- [Platform administration API]()
-- [The Deep Thought Engine]()
-- [Checkout service]()
+## Demo URL
+[TODO:]()
