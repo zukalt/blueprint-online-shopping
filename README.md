@@ -14,4 +14,4 @@ multiple ones so that separate teams working on it have more flexibility and fre
 - [Implementation roadmap](./documentation/roadmap/index.md)
 
 ## Demo URL
-[TODO:]()
+[Deep Thought Books Online](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/)
