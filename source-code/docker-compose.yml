@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+
+  spa-portal:
+    build: ./spa-portal
+    image: spa-portal
+    ports:
+      - "8080:80"
+    networks:
+      - frontend
+      - backend
+networks:
+  frontend:
+  backend:
