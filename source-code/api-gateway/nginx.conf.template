@@ -10,14 +10,15 @@ http {
         listen 80;
 
         server_name localhost;
-        resolver ${RESOLVER_ADDR};
+        resolver ${RESOLVER_ADDR} valid=10s;
 
         location / {
             proxy_pass http://portal-service.local:80;
         }
 
         location ~ /swagger-ui/(.*) {
-            proxy_pass http://swagger-ui.local:8080/$1;
+            set $sw_host "http://swagger-ui.local:8080";
+            proxy_pass $sw_host/$1;
         }
 
         location ~ /api/auth/(.*) {

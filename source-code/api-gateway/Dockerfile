@@ -1,5 +1,6 @@
 FROM nginx
 
+# AWS DNS IP for 10.0.0.0/16 network
 ENV RESOLVER_ADDR=10.0.0.2
 
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
