@@ -1,0 +1,222 @@
+swagger: '2.0'
+info:
+  description: Authentication Service API for registration, password change and recovery
+  version: '1.0'
+  title: Authentication Service
+#host: 'localhost:8080'
+basePath: /api/auth/
+
+tags:
+  - name: Authentication
+    description: 'Log in/out, registration and password recovery'
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  register:
+    post:
+      tags:
+        - Authentication
+      summary: Registers new user and sends activation link by email
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/UserRegistrationRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: User registered
+          schema:
+            type: object
+        '409':
+          description: User with such email exists
+
+  create-password:
+    post:
+      tags:
+        - Authentication
+      summary: Used in both initial registration and forgot-password flows to set new password
+
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/ResetPasswordRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: User activation(or password reset) done successfully
+          schema:
+            type: object
+        '409':
+          description: Password was not set (invalid token and or email)
+
+  change-password:
+    post:
+      tags:
+        - Authentication
+      summary: Change current password
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Password Changed
+          schema:
+            type: object
+        '401':
+          description: Current session is not valid
+        '403':
+          description: Incorrect old pass
+        '404':
+          description: If for some reason user not found
+      security:
+        - token: []
+
+  forgot-password:
+    post:
+      tags:
+        - Authentication
+      summary: Try restoring password via email
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/CreatePasswordRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Send password reset link to email
+        '409':
+          description: Problem with sending email
+
+  login:
+    post:
+      tags:
+        - Authentication
+      summary: Logs in and returns session data on success. Use return token in to access restricted APIs.
+      parameters:
+        - name: email
+          in: query
+          description: email
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: password
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Login successful
+          schema:
+            $ref: '#/definitions/UserSessionDto'
+        '401':
+          description: Login failed
+
+  logout:
+    get:
+      tags:
+        - Authentication
+      summary: Logs out if session is active
+      responses:
+        '200':
+          description: Always returns OK even if there was no such session
+
+  session:
+    get:
+      tags:
+        - Authentication
+      summary: Returns same object as in login. Used in tests to check successful session creation
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSessionDto'
+        '401':
+          description: Session is expired or invalid
+
+securityDefinitions:
+  token:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  UserRegistrationRequest:
+    type: object
+    properties:
+      email:
+        type: string
+      fullName:
+        type: string
+    title: UserRegistrationRequest
+
+  ChangePasswordRequest:
+    type: object
+    properties:
+      newPassword:
+        type: string
+      oldPassword:
+        type: string
+    title: ChangePasswordRequest
+  CreatePasswordRequest:
+    type: object
+    properties:
+      email:
+        type: string
+    title: CreatePasswordRequest
+  ResetPasswordRequest:
+    type: object
+    properties:
+      email:
+        type: string
+      newPassword:
+        type: string
+      token:
+        type: string
+    title: ResetPasswordRequest
+
+  UserDto:
+    type: object
+    properties:
+      email:
+        type: string
+      fullName:
+        type: string
+      id:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+    title: User
+  UserSessionDto:
+    type: object
+    properties:
+      token:
+        type: string
+      user:
+        $ref: '#/definitions/UserDto'
+    title: UserSession

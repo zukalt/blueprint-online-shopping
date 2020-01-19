@@ -1,0 +1,163 @@
+swagger: '2.0'
+info:
+  description: Books for sale service API
+  version: '1.0'
+  title: Books for sale service
+
+basePath: /api/books
+consumes:
+  - application/json
+produces:
+  - application/json
+
+tags:
+  - name: Books
+    description: Books CRUD API
+
+paths:
+  /:
+    post:
+      tags:
+        - Books
+      summary: create new book
+      parameters:
+        - in: body
+          name: body
+          description: new book
+          required: true
+          schema:
+            $ref: '#/definitions/BookData'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Book'
+        '201':
+          description: Book created
+        '401':
+          description: Session is invalid
+      security:
+        - token: []
+
+    get:
+      tags:
+        - Books
+      summary: retrieves all for logged in user.
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Book'
+        '401':
+          description: Session is invalid
+      security:
+        - token: []
+
+  '/{id}':
+    get:
+      tags:
+        - Books
+      summary: read
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Book'
+        '404':
+          description: Book not found
+
+    put:
+      tags:
+        - Books
+      summary: update book info
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+
+        - in: body
+          name: body
+          description: book data without id
+          required: true
+          schema:
+            $ref: '#/definitions/BookData'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Session is invalid
+        '403':
+          description: Not enough permissions
+        '404':
+          description: Book with ID Not Found
+      security:
+        - token: []
+
+    delete:
+      tags:
+        - Books
+      summary: delete book
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK - deleted
+        '401':
+          description: Session is invalid
+        '403':
+          description: Not enough permissions
+        '404':
+          description: Book with ID Not Found
+      security:
+        - token: []
+securityDefinitions:
+  token:
+    type: apiKey
+    name: Authorization
+    in: header
+
+definitions:
+  Book:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      pages:
+        type: integer
+        format: int32
+      quotes:
+        type: array
+        items:
+          type: string
+    title: Book
+
+  BookData:
+    type: object
+    properties:
+      title:
+        type: string
+      pages:
+        type: integer
+        format: int32
+      quotes:
+        type: array
+        items:
+          type: string
+    description: Book with no ID field
+    title: BookData

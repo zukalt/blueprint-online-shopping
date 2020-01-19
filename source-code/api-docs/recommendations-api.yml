@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  description: Serves various lists of books based on data provisioned by engine
+  version: '1.0'
+  title: Recommendations
+
+basePath: /api/recommendations
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /popular:
+    get:
+      tags:
+        - Recommendations
+      summary: most popular
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              type: string
+  /random:
+    get:
+      tags:
+        - Recommendations
+      summary: random books
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              type: string
+
+  /personal:
+    get:
+      tags:
+        - Recommendations
+      summary: suggested for logged in user
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              type: string
+        '401':
+          description: Session is invalid
+      security:
+        - token: []
+
+securityDefinitions:
+  token:
+    type: apiKey
+    name: Authorization
+    in: header
