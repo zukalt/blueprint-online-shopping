@@ -4,7 +4,7 @@ info:
   version: '1.0'
   title: Authentication Service
 #host: 'localhost:8080'
-basePath: /api/auth/
+basePath: /api/auth/v1
 
 tags:
   - name: Authentication
@@ -117,14 +117,16 @@ paths:
       tags:
         - Authentication
       summary: Logs in and returns session data on success. Use return token in to access restricted APIs.
+      consumes:
+        - application/x-www-form-urlencoded
       parameters:
         - name: email
-          in: query
+          in: formData
           description: email
           required: true
           type: string
         - name: password
-          in: query
+          in: formData
           description: password
           required: true
           type: string

@@ -11,12 +11,17 @@ services:
     depends_on:
       - swagger-ui.local
       - portal-service.local
+      - auth.local
     environment:
       RESOLVER_ADDR: 127.0.0.11
 
   "portal-service.local":
     build: ./spa-portal
     image: spa-portal
+
+  "auth.local":
+    build: ./auth-service
+    image: auth-service
 
   "swagger-ui.local":
     image:  swaggerapi/swagger-ui

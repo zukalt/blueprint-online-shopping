@@ -22,7 +22,7 @@ http {
         }
 
         location ~ /api/auth/(.*) {
-            proxy_pass http://auth.local:8080/external/auth/$1;
+            proxy_pass http://auth.local:8081/external/auth/$1;
             proxy_set_header Host            $host;
             proxy_set_header X-Forwarded-For $remote_addr;
         }
