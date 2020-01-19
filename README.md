@@ -12,8 +12,17 @@ multiple ones so that separate teams working on it have more flexibility and fre
 - [Technology stack and tools](./documentation/architecture/stack.md)
 - [Architecture](./documentation/architecture/index.md)
 - [Implementation roadmap](./documentation/roadmap/index.md)
+- [Source code index](./source-code/)
+## API Docs
+
+[Swagger Docs](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/swagger-ui/) are documenting only external APIs. 
+
+Demo credentials
+- email: `ada@example.com` password: `ada`
+- email: `susan@example.com` password: `susan`
+- email: `bob@example.com` password: `bob`
+
 
 ## Demo URL
 [Deep Thought Books Online](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/)
 
-[Swagger Docs](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/swagger-ui/)

@@ -209,10 +209,8 @@ definitions:
         type: string
       id:
         type: string
-      roles:
-        type: array
-        items:
-          type: string
+      role:
+        type: string
     title: User
   UserSessionDto:
     type: object
