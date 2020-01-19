@@ -146,7 +146,8 @@ paths:
       responses:
         '200':
           description: Always returns OK even if there was no such session
-
+      security:
+        - token: []
   /session:
     get:
       tags:
@@ -159,6 +160,8 @@ paths:
             $ref: '#/definitions/UserSessionDto'
         '401':
           description: Session is expired or invalid
+      security:
+        - token: []
 
 securityDefinitions:
   token:
