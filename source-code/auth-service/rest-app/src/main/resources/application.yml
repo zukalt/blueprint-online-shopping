@@ -1,0 +1,55 @@
+app:
+  admin:
+    email: ada@example.com
+  web:
+    url: http://localhost:4200
+  sessions:
+    keepAliveTimeMs: 6000000
+    tokensKeepAliveInHours: 6
+
+server:
+  port: 8081
+
+spring:
+  # Spring JDBC configuration
+  datasource:
+    url: jdbc:h2:file:/tmp/clean-data
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+
+  # Spring Data JPA configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+---
+spring:
+  profiles: test
+
+  main:
+    banner-mode: "off"
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+server:
+  port: 18080
+---
+spring:
+  profiles: prod
+
+  main:
+    banner-mode: "off"
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: false

@@ -15,3 +15,5 @@ multiple ones so that separate teams working on it have more flexibility and fre
 
 ## Demo URL
 [Deep Thought Books Online](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/)
+
+[Swagger Docs](http://deep-thought-lb-1741409573.eu-central-1.elb.amazonaws.com/swagger-ui/)

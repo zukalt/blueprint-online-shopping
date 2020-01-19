@@ -15,7 +15,7 @@ produces:
   - application/json
 
 paths:
-  register:
+  /register:
     post:
       tags:
         - Authentication
@@ -39,7 +39,7 @@ paths:
         '409':
           description: User with such email exists
 
-  create-password:
+  /create-password:
     post:
       tags:
         - Authentication
@@ -64,7 +64,7 @@ paths:
         '409':
           description: Password was not set (invalid token and or email)
 
-  change-password:
+  /change-password:
     post:
       tags:
         - Authentication
@@ -90,7 +90,7 @@ paths:
       security:
         - token: []
 
-  forgot-password:
+  /forgot-password:
     post:
       tags:
         - Authentication
@@ -112,7 +112,7 @@ paths:
         '409':
           description: Problem with sending email
 
-  login:
+  /login:
     post:
       tags:
         - Authentication
@@ -136,7 +136,7 @@ paths:
         '401':
           description: Login failed
 
-  logout:
+  /logout:
     get:
       tags:
         - Authentication
@@ -145,7 +145,7 @@ paths:
         '200':
           description: Always returns OK even if there was no such session
 
-  session:
+  /session:
     get:
       tags:
         - Authentication
